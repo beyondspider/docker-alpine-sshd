@@ -2,20 +2,21 @@
 
 ## build
 ```bash
-./build.sh
+docker build -t beyondspider/alpine-sshd:latest .
 ```
 
 ## start
 ```bash
-./start.sh
+docker run -u root -d --env ROOT_PASS=root -p 10022:22 --name alpine-sshd beyondspider/alpine-sshd:latest
+docker run -u root -d -p 10022:22 --name alpine-sshd beyondspider/alpine-sshd:latest
 ```
 
 ## ssh
 ```bash
-./ssh.sh
+ssh root@127.0.0.1 -p 10022
 ```
 
 ## push
 ```bash
-./push.sh
+docker push beyondspider/alpine-sshd:latest
 ```
